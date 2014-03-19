@@ -6,4 +6,4 @@ I use [cldoc](http://jessevdk.github.io/cldoc/documenting.html) as my documentat
 
 The Code is Licensed under `GNU AFFERO GENERAL PUBLIC LICENSE Version 3`.
 
-It's okay to reference these code, but you should never copy homework.
+It's okay to reference these code, but you should _never copy homework_.
