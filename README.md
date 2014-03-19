@@ -10,4 +10,6 @@ It's okay to reference these code, but you should __never copy homework__.
 
 ## Links
 
-[C++ Examples](http://en.wikibooks.org/wiki/C%2B%2B_Programming/Examples)
+- [C++ Examples](http://en.wikibooks.org/wiki/C%2B%2B_Programming/Examples)
+
+- http://yige.org/cpp/classes.php
