@@ -2,33 +2,26 @@
 // http://yige.org/cpp/classes.php
 
 #include <iostream>
-using namespace std;
+#include "String.h"
 
-class String {
-
-private:
-    int chars;
-
-public:
-    String(void);
-    String(char []);
-    ~String();
-    int length(void);
-    int indexOf(char);
-    // Lisp Style API
-    char first(void);
-    String drop(int);
-    bool empty(void);
-    // todo: substring, indexof, length, 
-};
 
 // 无参数构造函数
 String::String(void) {
+    this->len = 0;
+    this->chars = NULL;
 }
 
 // Constructor
-String::String(char chars[]) {
+String::String(const char* chars) {
+
+    // init this.chars
+    this->len = strlen(chars);
+
+    this->chars = new char[this->len]; // 这里不存 c style string 里最后的 \0
     
+    for(int i = 0; i < this->len; ++i) {
+        this->chars[i] = chars[i];
+    }
 };
 
 // Destructor
@@ -53,7 +46,7 @@ String String::drop (int n) {
 //////////////////
 
 int main() {
-    // String s = "123";
-    cout << "Hello World";
+    String s("123");
+    cout << "Hello World 2";
     return 0;
 }
