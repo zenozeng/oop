@@ -4,6 +4,18 @@
 
 see http://stackoverflow.com/questions/2916358/immutable-strings-vs-stdstring
 
+## API
+
+### Clojure Style
+
+http://richhickey.github.io/clojure-contrib/string-api.html
+
+### Javascript Style
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
 ## TODOS
+
+- Finish String.cpp
 
 - Write tests for String Class

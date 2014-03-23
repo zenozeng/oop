@@ -1,6 +1,3 @@
-// http://richhickey.github.io/clojure-contrib/string-api.html
-// http://yige.org/cpp/classes.php
-
 #include <iostream>
 #include "String.h"
 
