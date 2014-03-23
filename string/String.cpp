@@ -14,7 +14,6 @@ String::String(void) {
 // Constructor
 String::String(const char* chars) {
 
-    // init this.chars
     this->len = strlen(chars);
 
     this->chars = new char[this->len]; // 这里不存 c style string 里最后的 \0
@@ -28,13 +27,17 @@ String::String(const char* chars) {
 String::~String(void) {
 };
 
+bool String::empty (void) {
+    return this->len == 0;
+}
+
 /* Drops first n characters from string
  *
  * A string should not change its value,
  * thus this method will return a new instance of string.
  * Will return an empty string if n is greater than the length of string.
  */
-String String::drop (int n) {
+String String::substring (int start, int end) {
     // TODO 
     return String();
 }
@@ -47,6 +50,6 @@ String String::drop (int n) {
 
 int main() {
     String s("123");
-    cout << "Hello World 2";
+    cout << "Hello World 3";
     return 0;
 }

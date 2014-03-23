@@ -14,13 +14,11 @@ public:
     String(void);
     String(const char*);
     ~String();
+    bool empty(void);
     int length(void);
     int indexOf(char);
-    // Lisp Style API
-    char first(void);
-    String drop(int);
-    bool empty(void);
-    // todo: substring, indexof, length, 
+    String concat(String);
+    String substring(int, int);
 };
 
 #endif
