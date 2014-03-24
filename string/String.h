@@ -11,12 +11,14 @@ private:
     int len; // length
 
 public:
-    String(void);
+    String();
+    String(char*);
     String(const char*);
     ~String();
-    bool empty(void);
-    int length(void);
+    bool empty();
+    int length();
     int indexOf(char);
+    const char* to_c_str();
     String concat(String);
     String substring(int, int);
 };

@@ -3,12 +3,20 @@
 
 
 // 无参数构造函数
-String::String(void) {
+String::String() {
     this->len = 0;
     this->chars = NULL;
 }
 
 // Constructor
+// String str(chars);
+String::String(char* chars) {
+    this->len = strlen(chars);
+    this->chars = chars;
+}
+
+// Constructor
+// String str("123");
 String::String(const char* chars) {
 
     this->len = strlen(chars);
@@ -21,22 +29,43 @@ String::String(const char* chars) {
 };
 
 // Destructor
-String::~String(void) {
+String::~String() {
+    delete this->chars;
 };
 
-bool String::empty (void) {
+// Return true if the string is empty.
+bool String::empty () {
     return this->len == 0;
 }
 
-/* Drops first n characters from string
+// Note: 当类被析构，这个指针就不见了
+const char* String::to_c_str () {
+    return this->chars;
+}
+
+/* Return the length of the string.
  *
- * A string should not change its value,
- * thus this method will return a new instance of string.
- * Will return an empty string if n is greater than the length of string.
+ * Note that the \0 is ignored.
  */
-String String::substring (int start, int end) {
-    // TODO 
-    return String();
+int String::length () {
+    return this->len;
+}
+
+String String::substring (int start, int end = -1) {
+
+    char* chars;
+
+    if (end == -1 || end > this->len) {
+        end = this->len;
+    }
+
+    chars = new char[end - start];
+
+    for (int i = start; i < end; ++i) {
+        chars[i] = this->chars[i];
+    }
+
+    return String(chars);
 }
 
 //////////////////
@@ -46,7 +75,11 @@ String String::substring (int start, int end) {
 //////////////////
 
 int main() {
-    String s("123");
-    cout << "Hello World 3";
+    cout << ">> String Class Test\n";
+    String str("This is my String class.");
+    cout << str.to_c_str();
+    cout << "\n";
+    cout << ">> Substring Test\n";
+    cout << str.substring(0, 7).to_c_str();
     return 0;
 }
