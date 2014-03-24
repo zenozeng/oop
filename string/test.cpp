@@ -1,20 +1,26 @@
 #include "String.h"
+#include <cassert>
+#include <cstdlib>
 #include <iostream>
 
 using namespace std;
 
-void test();
+#define test(name, exp) assert(exp); \
+    cout << "PASS TEST: " << name << "\n"
 
 int main() {
+    const char* chars = "This is my String class.";
     cout << ">>>> String Class Test\n";
     cout << ">> 简单构造 / C风格字符串构造";
-    String str("This is my String class. ");
-    cout << ">> 无参数构造";
+    String str(chars);
+    cout << ">> 无参数构造\n";
     String str2;
-    cout << ">> 下标访问";
-    cout << str.charAt(0);
-    
-    cout << str.to_c_str();
+    test("下标访问", str.charAt(0) == 'T');
+    cout << ">> C风格字符串\n";
+    cout << "\n";
+    cout << strcmp(str.to_c_str(), chars);
+    cout << "\n";
+    assert(strcmp(str.to_c_str(), chars) == 0);
     cout << "\n";
     cout << ">> Substring Test\n";
     cout << str.substring(0, 7).to_c_str();
