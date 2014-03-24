@@ -3,9 +3,17 @@
 
 using namespace std;
 
+void test();
+
 int main() {
-    cout << ">> String Class Test\n";
+    cout << ">>>> String Class Test\n";
+    cout << ">> 简单构造 / C风格字符串构造";
     String str("This is my String class. ");
+    cout << ">> 无参数构造";
+    String str2;
+    cout << ">> 下标访问";
+    cout << str.charAt(0);
+    
     cout << str.to_c_str();
     cout << "\n";
     cout << ">> Substring Test\n";

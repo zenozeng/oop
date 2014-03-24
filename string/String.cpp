@@ -72,6 +72,14 @@ String String::substring (int start, int end = -1) {
     return String(chars);
 }
 
+// todo: 越界？
+char String::charAt (int index) {
+    if(index >= (this->len)) {
+        return '\0';
+    }
+    return this->chars[index];
+}
+
 int String::indexOf(char ch, int start = 0) {
 
     for (int i = start; i < this->len; ++i) {

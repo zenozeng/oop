@@ -19,6 +19,7 @@ public:
     int length();
     int indexOf(char, int);
     int bm_search(char*, int, char*, int);
+    char charAt(int);
     int indexOf(const char*);
     int indexOf(String);
     int compare(String);
