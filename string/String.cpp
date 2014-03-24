@@ -1,4 +1,4 @@
-#include <iostream>
+#include <cstdlib>
 #include "String.h"
 
 
@@ -8,21 +8,19 @@ String::String() {
     this->chars = NULL;
 }
 
-// Constructor
-// C风格字符串构造函数
-String::String(char* chars) {
-    this->len = strlen(chars);
-    this->chars = chars;
+// 拷贝构造
+String::String(const String& str) {
+    this->len = str.len;
+    this->chars = new char[this->len + 1];
+    memcpy(this->chars, str.chars, sizeof(char)*(this->len + 1));
 }
 
 // Constructor
 // String str("123");
 String::String(const char* chars) {
-
     this->len = strlen(chars);
-
+    // 这里必须要拷贝一份才安全，否则可能遭遇修改
     this->chars = new char[this->len + 1]; // 这里包括 c style string 里最后的 \0
-    
     for(int i = 0; i <= this->len; ++i) {
         this->chars[i] = chars[i];
     }
@@ -30,7 +28,9 @@ String::String(const char* chars) {
 
 // Destructor
 String::~String() {
-    delete this->chars;
+    if(this->chars) {
+        delete this->chars;
+    }
 };
 
 // Return true if the string is empty.
@@ -72,20 +72,41 @@ String String::substring (int start, int end = -1) {
     return String(chars);
 }
 
-//////////////////
-//
-// Test
-//
-//////////////////
+int String::indexOf(char ch, int start = 0) {
 
-int main() {
-    cout << ">> String Class Test\n";
-    String str("This is my String class. ");
-    cout << str.to_c_str();
-    cout << "\n";
-    cout << ">> Substring Test\n";
-    cout << str.substring(0, 7).to_c_str();
-    cout << ">> Compare Test\n";
-    cout << str.compare(str.substring(0, 7));
-    return 0;
+    for (int i = start; i < this->len; ++i) {
+        if(ch == this->chars[i]) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+int String::indexOf(const char* pattern) {
+
+    int pattern_len = strlen(pattern);
+
+    for (int i = 0; i < (this->len - pattern_len); ++i) {
+        for (int j = 0; j < pattern_len; ++j) {
+            if (pattern[j] != this->chars[i+j]) {
+                ++i;
+                j = 0;
+            } else {
+                if (j == (pattern_len - 1)) {
+                    return i;
+                }
+            }
+        }
+    }
+
+    return -1;
+}
+
+int String::indexOf(String str) {
+
+    // 对str，这里调用的是拷贝构造函数
+    // 若无拷贝构造函数则会直接复制内存，则析构函数会报错会被重复调用
+    
+    return this->indexOf( str.to_c_str() );
 }

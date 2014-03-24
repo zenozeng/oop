@@ -12,12 +12,15 @@ private:
 
 public:
     String();
-    String(char*);
     String(const char*);
+    String(const String&);
     ~String();
     bool empty();
     int length();
-    int indexOf(char);
+    int indexOf(char, int);
+    int bm_search(char*, int, char*, int);
+    int indexOf(const char*);
+    int indexOf(String);
     int compare(String);
     const char* to_c_str();
     String concat(String);

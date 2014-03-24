@@ -1,5 +1,5 @@
-build: String.cpp
-	clang++ String.cpp -Wall
+build: *.cpp
+	clang++ *.cpp -Wall
 
 test: build
 	./a.out
