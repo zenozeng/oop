@@ -18,6 +18,7 @@ public:
     bool empty();
     int length();
     int indexOf(char);
+    int compare(String);
     const char* to_c_str();
     String concat(String);
     String substring(int, int);

@@ -1,5 +1,9 @@
 # Immutable String Class for C++
 
+## Chinese Chars?
+
+Not supported now.
+
 ## immutable strings vs std::string
 
 see http://stackoverflow.com/questions/2916358/immutable-strings-vs-stdstring

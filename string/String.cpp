@@ -9,7 +9,7 @@ String::String() {
 }
 
 // Constructor
-// String str(chars);
+// C风格字符串构造函数
 String::String(char* chars) {
     this->len = strlen(chars);
     this->chars = chars;
@@ -21,9 +21,9 @@ String::String(const char* chars) {
 
     this->len = strlen(chars);
 
-    this->chars = new char[this->len]; // 这里不存 c style string 里最后的 \0
+    this->chars = new char[this->len + 1]; // 这里包括 c style string 里最后的 \0
     
-    for(int i = 0; i < this->len; ++i) {
+    for(int i = 0; i <= this->len; ++i) {
         this->chars[i] = chars[i];
     }
 };
@@ -51,6 +51,10 @@ int String::length () {
     return this->len;
 }
 
+int String::compare (String str) {
+    return strcmp(this->chars, str.to_c_str());
+}
+
 String String::substring (int start, int end = -1) {
 
     char* chars;
@@ -76,10 +80,12 @@ String String::substring (int start, int end = -1) {
 
 int main() {
     cout << ">> String Class Test\n";
-    String str("This is my String class.");
+    String str("This is my String class. ");
     cout << str.to_c_str();
     cout << "\n";
     cout << ">> Substring Test\n";
     cout << str.substring(0, 7).to_c_str();
+    cout << ">> Compare Test\n";
+    cout << str.compare(str.substring(0, 7));
     return 0;
 }
