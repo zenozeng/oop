@@ -4,12 +4,6 @@
 #include <cstring>
 using namespace std;
 
-/* Zeno Zeng's String Implementation
- *
- * This is my CPP Homework at ZJU.
- * Note that this is an Immutable String Implementation.
- * You can not change current String but you can get a new String.
- */
 class String {
 
 private:

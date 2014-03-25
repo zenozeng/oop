@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['string',['String',['../classString.html',1,'']]]
+  ['empty',['empty',['../classString.html#aac04442c56b96a18f0ef112e209c32b3',1,'String']]]
 ];
