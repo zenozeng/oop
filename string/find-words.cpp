@@ -16,7 +16,7 @@ int main() {
     if (file.is_open()) {
         while( !file.eof() ) {
             file >> ch;
-            file_contents = file_contents.concat(ch);
+            file_contents = file_contents.concat("hello world\n");
         }
         file.close();
     } else {

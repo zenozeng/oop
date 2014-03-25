@@ -2,8 +2,6 @@
 
 My OOP Homework at ZJU.
 
-I use [cldoc](http://jessevdk.github.io/cldoc/documenting.html) as my documentation generator.
-
 I use doxygen as my documentation generator.  And I use [this theme](https://github.com/nnen/doxygen-theme).
 
 I use clang++ as my compiler. Make sure you have libclang1 installed, if you want to generate doc.
