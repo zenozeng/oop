@@ -38,6 +38,9 @@ String& String::operator=(const String& str) {
         this->chars = new char[this->len + 1];
         memcpy(this->chars, str.chars, sizeof(char) * (this->len + 1));
     }
+
+    // *this 是这个 String Object，
+    // 最后返回时自动将这个 Object 转换为了 reference
     return *this;
 }
 
