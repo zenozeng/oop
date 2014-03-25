@@ -32,6 +32,7 @@ int main() {
     test("substring", strcmp(str.substring(0, 4).to_c_str(), "This") == 0);
     test("length", str.length() == strlen(chars));
     test("compare", str.compare("This is") > 0 && str.compare("Z") < 0 && str.compare(chars) == 0);
+    test("concat(char)", strcmp(str.concat('!').to_c_str(), "This is my String class.!") == 0);
     test("concat(char* chars)", strcmp(str.concat("!!!").to_c_str(), "This is my String class.!!!") == 0);
     String append_str("!!!");
     test("concat(String)", strcmp(str.concat(append_str).to_c_str(), "This is my String class.!!!") == 0);

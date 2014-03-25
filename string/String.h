@@ -24,6 +24,7 @@ public:
     int compare(const char*);
     const char* to_c_str();
     String substring(int, int);
+    String concat(const char);
     String concat(const char*);
     String concat(String);
 };

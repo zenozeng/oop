@@ -82,6 +82,22 @@ int String::length () {
  * Combines the text and returns a new string.
  *
  */
+String String::concat (const char ch) {
+    int new_len = this->len + 2;
+    char* new_chars;
+    new_chars = new char[new_len + 1];
+    memcpy(new_chars, this->chars, sizeof(char) * (this->len));
+    new_chars[new_len - 2] = ch;
+    new_chars[new_len - 1] = '\0';
+    String str(new_chars);
+    delete new_chars;
+    return str;
+}
+
+/**
+ * Combines the text and returns a new string.
+ *
+ */
 String String::concat (const char* chars) {
     int new_len = this->len + strlen(chars);
     char* new_chars;

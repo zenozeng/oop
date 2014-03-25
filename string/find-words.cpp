@@ -9,18 +9,21 @@ int main() {
 
     ifstream file("TEXT");
 
-    char* line;
+    String file_contents;
 
-    String file_content;
+    char ch;
 
     if (file.is_open()) {
+        while( !file.eof() ) {
+            file >> ch;
+            file_contents = file_contents.concat(ch);
+        }
         file.close();
     } else {
         cout << "Fail to open file";
-        while (getline (file, line)) {
-            file_content.concat(line);
-        }
     }
+
+    cout << file_contents.to_c_str();
 
     return 0;
 }
