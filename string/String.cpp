@@ -73,14 +73,13 @@ const char* String::to_c_str () {
 /**
  * Return the length of the string
  *
- * @note the \0 is ignored
  */
 int String::length () {
     return this->len;
 }
 
 /**
- * Append chars to current string
+ * Combines the text and returns a new string.
  *
  */
 String String::concat (const char* chars) {
@@ -97,7 +96,7 @@ String String::concat (const char* chars) {
 }
 
 /**
- * Append str to current string
+ * Combines the text and returns a new string.
  *
  */
 String String::concat (String str) {
