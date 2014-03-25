@@ -4,4 +4,11 @@ build: *.cpp
 test: build
 	./a.out
 
-.PHONY: test build
+CXXFLAGS = -I. -fPIC
+SOURCES = *.cpp
+HEADERS = *.h
+
+doc: build
+	doxygen Doxyfile
+
+.PHONY: test build doc

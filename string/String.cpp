@@ -5,7 +5,8 @@
 // 无参数构造函数
 String::String() {
     this->len = 0;
-    this->chars = NULL;
+    this->chars = new char[1];
+    this->chars[0] = '\0';
 }
 
 // 拷贝构造
@@ -26,9 +27,7 @@ String::String(const char* chars) {
 
 // Destructor
 String::~String() {
-    if(this->chars) {
-        delete this->chars;
-    }
+    delete this->chars;
 };
 
 // Return true if the string is empty.
@@ -75,7 +74,6 @@ String String::substring (int start, int end = -1) {
     return String(chars);
 }
 
-// todo: 越界？
 char String::charAt (int index) {
     if(index >= (this->len)) {
         return '\0';
@@ -117,7 +115,8 @@ int String::indexOf(const char* pattern) {
 int String::indexOf(String str) {
 
     // 对str，这里调用的是拷贝构造函数
-    // 若无拷贝构造函数则会直接复制内存，则析构函数会报错会被重复调用
+    // 若无拷贝构造函数则会直接复制内存，则析构函数会报错，
+    // 因为那些指针指向的 delete 会被重复调用
     
     return this->indexOf( str.to_c_str() );
 }

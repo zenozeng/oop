@@ -1,4 +1,4 @@
-# Immutable String Class for C++
+# String Class
 
 ## Chinese Chars?
 
