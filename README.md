@@ -14,6 +14,10 @@ It's okay to reference these code, but you should __never copy homework__.
 
 And great thanks to @richard1122!
 
+## Notes
+
+- Default parameter 应该在 header 定义
+
 ## Links
 
 - [C++ Examples](http://en.wikibooks.org/wiki/C%2B%2B_Programming/Examples)

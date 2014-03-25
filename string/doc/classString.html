@@ -106,15 +106,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af933abbb49d088f2041b2bd3c5a6b5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcb97a258055b769c018246b66f85a13"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classString.html#abcb97a258055b769c018246b66f85a13">charAt</a> (int)</td></tr>
 <tr class="separator:abcb97a258055b769c018246b66f85a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6633f9d55d27b821ed4e1c42e2814dd0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6633f9d55d27b821ed4e1c42e2814dd0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>indexOf</b> (char, int)</td></tr>
-<tr class="separator:a6633f9d55d27b821ed4e1c42e2814dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d565daf1bd01e2fad092a1a4160f897"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d565daf1bd01e2fad092a1a4160f897"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>indexOf</b> (const char *)</td></tr>
-<tr class="separator:a2d565daf1bd01e2fad092a1a4160f897"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3122adf55bcd7554cf4b2811000245b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3122adf55bcd7554cf4b2811000245b5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>indexOf</b> (<a class="el" href="classString.html">String</a>)</td></tr>
-<tr class="separator:a3122adf55bcd7554cf4b2811000245b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af88b9ead57beb3320cea5033c481eab7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classString.html#af88b9ead57beb3320cea5033c481eab7">indexOf</a> (const char *, int start=0)</td></tr>
+<tr class="separator:af88b9ead57beb3320cea5033c481eab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f0ee26d514ce7921bc8a1fea1ed2e4f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classString.html#a6f0ee26d514ce7921bc8a1fea1ed2e4f">indexOf</a> (<a class="el" href="classString.html">String</a>, int start=0)</td></tr>
+<tr class="separator:a6f0ee26d514ce7921bc8a1fea1ed2e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1de8515b61968f7d7613fd5c2629a5c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classString.html#a1de8515b61968f7d7613fd5c2629a5c6">compare</a> (<a class="el" href="classString.html">String</a>)</td></tr>
 <tr class="separator:a1de8515b61968f7d7613fd5c2629a5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc0bdac8303dff22e01b100106867e1d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classString.html#afc0bdac8303dff22e01b100106867e1d">compare</a> (const char *)</td></tr>
@@ -260,6 +255,74 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>indexOf</b> (<a class=
 
 </div>
 </div>
+<a class="anchor" id="af88b9ead57beb3320cea5033c481eab7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int String::indexOf </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return the index of the first occurrence of the search value. Returns -1 if the value is not found.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pattern</td><td>The search value. </td></tr>
+    <tr><td class="paramname">start</td><td>The index to start the search from. The default value is 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6f0ee26d514ce7921bc8a1fea1ed2e4f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int String::indexOf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classString.html">String</a>&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return the index of the first occurrence of the search value. Returns -1 if the value is not found.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pattern</td><td>The search value. </td></tr>
+    <tr><td class="paramname">start</td><td>The index to start the search from. The default value is 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="af933abbb49d088f2041b2bd3c5a6b5d8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -329,7 +392,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>indexOf</b> (<a class=
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 25 2014 12:54:14 for String by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Mar 25 2014 13:19:33 for String by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

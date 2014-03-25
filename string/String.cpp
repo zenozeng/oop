@@ -131,7 +131,14 @@ char String::charAt (int index) {
     return this->chars[index];
 }
 
-int String::indexOf(const char* pattern, int start = 0) {
+/**
+ * Return the index of the first occurrence of the search value.
+ * Returns -1 if the value is not found.
+ *
+ * @param pattern The search value.
+ * @param start The index to start the search from. The default value is 0.
+ */
+int String::indexOf(const char* pattern, int start) {
 
     int pattern_len = strlen(pattern);
 
@@ -150,11 +157,18 @@ int String::indexOf(const char* pattern, int start = 0) {
     return -1;
 }
 
-int String::indexOf(String str) {
+/**
+ * Return the index of the first occurrence of the search value.
+ * Returns -1 if the value is not found.
+ *
+ * @param pattern The search value.
+ * @param start The index to start the search from. The default value is 0.
+ */
+int String::indexOf(String str, int start) {
 
     // 对str，这里调用的是拷贝构造函数
     // 若无拷贝构造函数则会直接复制内存，则析构函数会报错，
     // 因为那些指针指向的 delete 会被重复调用
     
-    return this->indexOf( str.to_c_str() );
+    return this->indexOf( str.to_c_str() , start );
 }

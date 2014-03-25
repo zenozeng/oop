@@ -23,10 +23,11 @@ int main() {
     cout << "\n>>> Method Test\n";
     test("empty", str.empty() == false && str_without_arg.empty() == true);
     test("charAt", str.charAt(0) == 'T');
-    test("indexOf(char* pattern)", str.indexOf("his") == 1);
+    test("indexOf(char* pattern)", str.indexOf("is") == 2);
     test("indexOf(char* pattern, int start)", str.indexOf("is", 3) == 5);
-    String search("his");
-    test("indexOf(String pattern)", str.indexOf(search) == 1);
+    String search("is");
+    test("indexOf(String pattern)", str.indexOf(search) == 2);
+    test("indexOf(String pattern, int start)", str.indexOf(search, 3) == 5);
     test("to_c_str", strcmp(chars, str.to_c_str()) == 0);
     test("substring", strcmp(str.substring(0, 4).to_c_str(), "This") == 0);
     test("length", str.length() == strlen(chars));
