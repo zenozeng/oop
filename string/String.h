@@ -18,8 +18,7 @@ public:
     bool empty();
     int length();
     char charAt(int);
-    int indexOf(char, int);
-    int indexOf(const char*);
+    int indexOf(const char*, int);
     int indexOf(String);
     int compare(String);
     int compare(const char*);

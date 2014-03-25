@@ -131,22 +131,11 @@ char String::charAt (int index) {
     return this->chars[index];
 }
 
-int String::indexOf(char ch, int start = 0) {
-
-    for (int i = start; i < this->len; ++i) {
-        if(ch == this->chars[i]) {
-            return i;
-        }
-    }
-
-    return -1;
-}
-
-int String::indexOf(const char* pattern) {
+int String::indexOf(const char* pattern, int start = 0) {
 
     int pattern_len = strlen(pattern);
 
-    for (int i = 0; i < (this->len - pattern_len); ++i) {
+    for (int i = start; i < (this->len - pattern_len); ++i) {
         for (int j = 0; j < pattern_len; ++j) {
             if (pattern[j] != this->chars[i+j]) {
                 break;
