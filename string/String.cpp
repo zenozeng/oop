@@ -11,7 +11,7 @@ String::String() {
 // 拷贝构造
 String::String(const String& str) {
     this->len = str.len;
-    this->chars = new char[this->len + 1];
+    this->chars = new char[this->len + 1]; // 这里包括 c style string 里最后的 \0
     memcpy(this->chars, str.chars, sizeof(char)*(this->len + 1));
 }
 
@@ -21,9 +21,7 @@ String::String(const char* chars) {
     this->len = strlen(chars);
     // 这里必须要拷贝一份才安全，否则可能遭遇修改
     this->chars = new char[this->len + 1]; // 这里包括 c style string 里最后的 \0
-    for(int i = 0; i <= this->len; ++i) {
-        this->chars[i] = chars[i];
-    }
+    memcpy(this->chars, chars, sizeof(char)*(this->len + 1));
 };
 
 // Destructor
@@ -67,11 +65,12 @@ String String::substring (int start, int end = -1) {
         end = this->len;
     }
 
-    chars = new char[end - start];
+    chars = new char[end - start + 2];
 
     for (int i = start; i < end; ++i) {
         chars[i] = this->chars[i];
     }
+    chars[end - start + 1] = '\0';
 
     return String(chars);
 }

@@ -23,10 +23,11 @@ int main() {
     cout << "\n>>> 函数测试\n";
     test("empty", str.empty() == false && str_without_arg.empty() == true);
     test("charAt", str.charAt(0) == 'T');
-    test("substring (char*)", str.indexOf("his") == 1);
+    test("indexOf (char*)", str.indexOf("his") == 1);
     String search("his");
-    test("substring (String)", str.indexOf(search) == 1);
+    test("indexOf (String)", str.indexOf(search) == 1);
     test("to_c_str", strcmp(chars, str.to_c_str()) == 0);
+    test("substring", strcmp(str.substring(0, 4).to_c_str(), "This") == 0);
     test("length", str.length() == strlen(chars));
     test("Compare", str.compare("This is") > 0 && str.compare("Z") < 0 && str.compare(chars) == 0);
 
