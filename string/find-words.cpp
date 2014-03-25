@@ -7,23 +7,32 @@ using namespace std;
 int main() {
     cout << "Find Words containing the given substring, and print it in the order of alphabet";
 
-    ifstream file("TEXT");
+    ifstream file("TEXT_SHORT");
 
     String file_contents;
+
+    String tmp;
 
     char ch;
 
     if (file.is_open()) {
         while( !file.eof() ) {
             file >> ch;
-            file_contents = file_contents.concat("hello world\n");
+            cout << ch << endl;
+            cout << "t0" << endl;
+            file_contents = file_contents.concat(ch);
+            cout << file_contents.to_c_str() << endl;
+            cout << "t1" << endl;
         }
-        file.close();
+        cout << "t2" << endl;
+        cout << file_contents.to_c_str() << endl;
+        cout << "t3" << endl;
+        // file.close();
     } else {
         cout << "Fail to open file";
     }
 
-    cout << file_contents.to_c_str();
 
+    cout << "t4" << endl;
     return 0;
 }

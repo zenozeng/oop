@@ -14,7 +14,16 @@ And great thanks to @richard1122!
 
 ## Notes
 
-- Default parameter 应该在 header 定义
+### Default parameter
+
+Default parameter 应该在 header 定义
+
+### 赋值构造和拷贝构造
+
+`file_contents = file_contents.concat(ch);` 这个是赋值构造
+
+`file_contents2 = file_contents.concat(ch);` 这个是拷贝构造
+            
 
 ## Links
 

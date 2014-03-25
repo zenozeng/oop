@@ -1,6 +1,8 @@
 #include <cstdlib>
 #include "String.h"
 
+#include <iostream>
+
 /**
  * @file
  * @author  Zeno Zeng <zenoofzeng@gmail.com>
@@ -21,6 +23,22 @@ String::String() {
     this->len = 0;
     this->chars = new char[1];
     this->chars[0] = '\0';
+}
+
+/**
+ * Constructor for assignment
+ *
+ */
+String& String::operator=(const String& str) {
+    if(this != &str) {
+        // 原先的值已经不再需要
+        delete[] this->chars;
+
+        this->len = str.len;
+        this->chars = new char[this->len + 1];
+        memcpy(this->chars, str.chars, sizeof(char) * (this->len + 1));
+    }
+    return *this;
 }
 
 /**
@@ -49,7 +67,7 @@ String::String(const char* chars) {
  *
  */
 String::~String() {
-    delete this->chars;
+    delete[] this->chars;
 };
 
 /**
@@ -83,14 +101,14 @@ int String::length () {
  *
  */
 String String::concat (const char ch) {
-    int new_len = this->len + 2;
+    int new_len = this->len + 1;
     char* new_chars;
     new_chars = new char[new_len + 1];
     memcpy(new_chars, this->chars, sizeof(char) * (this->len));
-    new_chars[new_len - 2] = ch;
-    new_chars[new_len - 1] = '\0';
+    new_chars[new_len - 1] = ch;
+    new_chars[new_len] = '\0';
     String str(new_chars);
-    delete new_chars;
+    delete[] new_chars;
     return str;
 }
 
@@ -107,7 +125,7 @@ String String::concat (const char* chars) {
         new_chars[i + this->len] = chars[i];
     }
     String str(new_chars);
-    delete new_chars;
+    delete[] new_chars;
     return str;
 }
 
