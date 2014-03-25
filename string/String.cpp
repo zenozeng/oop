@@ -55,6 +55,10 @@ int String::compare (String str) {
     return strcmp(this->chars, str.to_c_str());
 }
 
+int String::compare (const char* chars) {
+    return strcmp(this->chars, chars);
+}
+
 String String::substring (int start, int end = -1) {
 
     char* chars;

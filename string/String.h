@@ -17,14 +17,13 @@ public:
     ~String();
     bool empty();
     int length();
-    int indexOf(char, int);
-    int bm_search(char*, int, char*, int);
     char charAt(int);
+    int indexOf(char, int);
     int indexOf(const char*);
     int indexOf(String);
     int compare(String);
+    int compare(const char*);
     const char* to_c_str();
-    String concat(String);
     String substring(int, int);
 };
 
