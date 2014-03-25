@@ -1,14 +1,11 @@
 build: *.cpp
 	clang++ *.cpp -Wall
 
-test: build
+test: String.cpp test.cpp
+	clang++ String.cpp test.cpp
 	./a.out
 
-CXXFLAGS = -I. -fPIC
-SOURCES = *.cpp
-HEADERS = *.h
-
-doc: build
-	doxygen Doxyfile
+doc: *.cpp
+	doxygen ../doxy-config/Doxyfile
 
 .PHONY: test build doc

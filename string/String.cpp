@@ -161,7 +161,7 @@ int String::indexOf(const char* pattern, int start) {
  * Return the index of the first occurrence of the search value.
  * Returns -1 if the value is not found.
  *
- * @param pattern The search value.
+ * @param str The search value.
  * @param start The index to start the search from. The default value is 0.
  */
 int String::indexOf(String str, int start) {
