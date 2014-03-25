@@ -30,7 +30,7 @@ String::String() {
 String::String(const String& str) {
     this->len = str.len;
     this->chars = new char[this->len + 1]; // 这里包括 c style string 里最后的 \0
-    memcpy(this->chars, str.chars, sizeof(char)*(this->len + 1));
+    memcpy(this->chars, str.chars, sizeof(char) * (this->len + 1));
 }
 
 /**
@@ -77,6 +77,31 @@ const char* String::to_c_str () {
  */
 int String::length () {
     return this->len;
+}
+
+/**
+ * Append chars to current string
+ *
+ */
+String String::concat (const char* chars) {
+    int new_len = this->len + strlen(chars);
+    char* new_chars;
+    new_chars = new char[new_len + 1];
+    memcpy(new_chars, this->chars, sizeof(char) * (this->len));
+    for(int i = 0; i <= strlen(chars); ++i) {
+        new_chars[i + this->len] = chars[i];
+    }
+    String str(new_chars);
+    delete new_chars;
+    return str;
+}
+
+/**
+ * Append str to current string
+ *
+ */
+String String::concat (String str) {
+    return this->concat(str.chars);
 }
 
 /**
