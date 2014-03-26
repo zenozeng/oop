@@ -16,23 +16,27 @@ int main() {
     char ch;
 
     if (file.is_open()) {
+    							cout << "Loading File" << endl;
         while( !file.eof() ) {
             file >> ch;
-            cout << ch << endl;
-            cout << "t0" << endl;
             file_contents = file_contents.concat(ch);
-            cout << file_contents.to_c_str() << endl;
-            cout << "t1" << endl;
         }
-        cout << "t2" << endl;
         cout << file_contents.to_c_str() << endl;
-        cout << "t3" << endl;
-        // file.close();
+        file.close();
     } else {
         cout << "Fail to open file";
     }
 
-
-    cout << "t4" << endl;
+				  int cursor = 0; // 游标
+				  int len = file_contents.length();
+				  String pattern = "pro";
+				  while(cursor < len) {
+				  	    find = file_contents.indexOf(pattern, cursor);
+				  	    if(find != -1) {
+				  	    	    // look back to get the word
+				  	    	    // todo: get_word_by_index: get the word which contains the index, should return String
+				  	    }
+				  	    ++cursor;
+				  }
     return 0;
 }
