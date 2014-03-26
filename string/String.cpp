@@ -1,8 +1,6 @@
 #include <cstdlib>
 #include "String.h"
 
-#include <iostream>
-
 /**
  * @file
  * @author  Zeno Zeng <zenoofzeng@gmail.com>
@@ -192,8 +190,6 @@ String String::substring (int start, int end = -1) {
  */
 String String::getword (int fromIndex) {
 
-    cout << ":: GETWORD :: (" << fromIndex << endl;
-
     char ch;
     int cursor = fromIndex;
     int start;
@@ -226,7 +222,6 @@ String String::getword (int fromIndex) {
         ch = this->chars[cursor];
     }
     end = cursor;
-    cout << ":: GETWORD :: [" << start << "," << end << "]";
     return this->substring(start, end);
 }
 

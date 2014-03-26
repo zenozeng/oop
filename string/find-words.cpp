@@ -43,25 +43,20 @@ int main() {
     int cursor = 0; // 游标
     String pattern = "cd";
     int occur = file_contents.indexOf(pattern, cursor);
-    cursor = occur;
     int last_occur = -1;
     while(occur != -1 && occur != last_occur) {
-        cout << endl;
-        cout << "occur:" << occur << " last:" << last_occur << endl;
-        cout << "cursor:" << cursor << endl;
-        
-        String word = file_contents.getword(cursor);
-        cout << "FIND::" << word.to_c_str() << "::" << word.length() << endl;
+        String word = file_contents.getword(occur);
+        cout << "FIND::" << word.to_c_str() << endl;
 
-        // update cursor
-        cursor += word.length();
+        // update cursor to the end + 1 of word
+        int index_in_word = word.indexOf(pattern);
+        int word_length = word.length();
+        int pattern_occur = occur;
+        cursor = pattern_occur + word_length + index_in_word;
 
         // update occur
         last_occur = occur;
         occur = file_contents.indexOf(pattern, cursor);
-
-        cout << ">> occur:" << occur << " last:" << last_occur << endl;
-        cout << ">> cursor:" << cursor << endl;
     }
     return 0;
 }
