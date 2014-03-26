@@ -4,6 +4,10 @@
 
 using namespace std;
 
+// Config
+String pattern = "ro";
+String target_file = "target.txt";
+
 int main() {
     cout << "Find Words containing the given substring," << endl << " and print it in the order of alphabet" << endl;
 
@@ -17,7 +21,7 @@ int main() {
     // note that operator >> will eat all whitespace
     // so use fopen and fgetc here
 
-    pFile = fopen("TEXT", "r");
+    pFile = fopen(target_file.to_c_str(), "r");
     if (pFile == NULL) {
         perror("Fail to open file");
     } else {
@@ -35,13 +39,31 @@ int main() {
 
     cout << ">> File loaded." << endl;
 
+    String* words;
+    words = new String[10000];
+    int count = 0;
+
     int cursor = 0; // 游标
-    String pattern = "pro";
     int occur = file_contents.indexOf(pattern, cursor);
     int last_occur = -1;
     while(occur != -1 && occur != last_occur) {
         String word = file_contents.getword(occur);
-        cout << "FIND::" << word.to_c_str() << endl;
+        cout << endl << "Find `" << pattern.to_c_str() << "` in `" << word.to_c_str() << "`";
+
+        // push to array
+        bool exists = false;
+        for(int i = 0; i < count; ++i) {
+            String str = words[i];
+            if(str.compare(word) == 0) {
+                exists = true;
+            }
+        }
+        if(exists) {
+            cout << " (already exists)";
+        } else {
+            words[count] = word;
+            ++count;
+        }
 
         // update cursor to the end + 1 of word
         int index_in_word = word.indexOf(pattern);
@@ -52,6 +74,23 @@ int main() {
         // update occur
         last_occur = occur;
         occur = file_contents.indexOf(pattern, cursor);
+    }
+    cout << endl << ">> Find " << count << " in total.";
+
+    // sort words
+    for(int i = 0; i < count; ++i) {
+        for(int j = i + 1; j < count; ++j) {
+            if(words[i].compare(words[j]) > 0) {
+                String tmp = words[i];
+                words[i] = words[j];
+                words[j] = tmp;
+            }
+        }
+    }
+
+    // output words
+    for(int i = 0; i < count; ++i) {
+        cout << endl << i + 1 << ". " << words[i].to_c_str();
     }
     return 0;
 }
