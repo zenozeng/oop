@@ -9,6 +9,7 @@ class String {
 private:
     char* chars;
     int len;
+    bool is_valid_char_of_word(char);
 
 public:
     String();

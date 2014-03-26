@@ -14,12 +14,10 @@ int main() {
 
     FILE * pFile;
 
-    cout << "init> " << file_contents.length() << endl;
-    
     // note that operator >> will eat all whitespace
     // so use fopen and fgetc here
 
-    pFile = fopen("TEXT_SHORT", "r");
+    pFile = fopen("TEXT", "r");
     if (pFile == NULL) {
         perror("Fail to open file");
     } else {
@@ -35,13 +33,10 @@ int main() {
         }
     }
 
-    cout << file_contents.length() << endl;
-    cout << file_contents.to_c_str() << endl;
-
-    cout << "File loaded." << endl;
+    cout << ">> File loaded." << endl;
 
     int cursor = 0; // 游标
-    String pattern = "cd";
+    String pattern = "pro";
     int occur = file_contents.indexOf(pattern, cursor);
     int last_occur = -1;
     while(occur != -1 && occur != last_occur) {

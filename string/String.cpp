@@ -182,11 +182,22 @@ String String::substring (int start, int end = -1) {
 }
 
 /**
+ * Return true if the char match `a-zA-Z'`
+ *
+ * @note About `'`, it is not included yet. To write, make sure it's not the beg nor end.
+ * @private
+ */
+bool String::is_valid_char_of_word (char ch) {
+    return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
+}
+
+/**
  * Get the first word whose end index >= fromIndex
  *
  * @param fromIndex The index to start the search from. The default value is 0.
  *
  * @note if we are at the middle of a word, it will look back to get the whole word.
+ * @note a word should only contains `a-zA-Z'`
  */
 String String::getword (int fromIndex) {
 
@@ -196,10 +207,10 @@ String String::getword (int fromIndex) {
     int end; // note that end is not included
 
     ch = this->chars[cursor];
-    if(ch != ' ' && ch != '\n' && ch != '\t') {
+    if(this->is_valid_char_of_word(ch)) {
         // we may at the beginning or middle of a word
         // go backward to get where the word starts
-        while(cursor > -1 && ch != ' ' && ch != '\n' && ch != '\t') {
+        while(cursor > -1 && (this->is_valid_char_of_word(ch))) {
             --cursor;
             ch = this->chars[cursor];
         }
@@ -210,14 +221,14 @@ String String::getword (int fromIndex) {
         start = cursor;
     } else {
         // go forward to get where the word starts
-        while(cursor < (this->len - 1) && (ch == ' ' || ch == '\n' || ch == '\t')) {
+        while(cursor < (this->len - 1) && (!this->is_valid_char_of_word(ch))) {
             ++cursor;
             ch = this->chars[cursor];
         }
         start = cursor;
     }
     // go forward to get where the word ends
-    while(cursor < this->len && ch != ' ' && ch != '\n' && ch != '\t') {
+    while(cursor < this->len && this->is_valid_char_of_word(ch)) {
         ++cursor;
         ch = this->chars[cursor];
     }
