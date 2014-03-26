@@ -1,8 +1,6 @@
 #include <cstdlib>
 #include "String.h"
 
-#include <iostream>
-
 /**
  * @file
  * @author  Zeno Zeng <zenoofzeng@gmail.com>
