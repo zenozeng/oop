@@ -1,6 +1,8 @@
 #include <cstdlib>
 #include "String.h"
 
+#include <iostream>
+
 /**
  * @file
  * @author  Zeno Zeng <zenoofzeng@gmail.com>
@@ -189,6 +191,9 @@ String String::substring (int start, int end = -1) {
  * @note if we are at the middle of a word, it will look back to get the whole word.
  */
 String String::getword (int fromIndex) {
+
+    cout << ":: GETWORD :: (" << fromIndex << endl;
+
     char ch;
     int cursor = fromIndex;
     int start;
@@ -198,10 +203,14 @@ String String::getword (int fromIndex) {
     if(ch != ' ' && ch != '\n' && ch != '\t') {
         // we may at the beginning or middle of a word
         // go backward to get where the word starts
-        while(cursor > 0 && ch != ' ' && ch != '\n' && ch != '\t') {
+        while(cursor > -1 && ch != ' ' && ch != '\n' && ch != '\t') {
             --cursor;
             ch = this->chars[cursor];
         }
+        // we are at the whitespace right before the word, forward 1 char now
+        ++cursor;
+        ch = this->chars[cursor];
+        // set start of word
         start = cursor;
     } else {
         // go forward to get where the word starts
@@ -217,6 +226,7 @@ String String::getword (int fromIndex) {
         ch = this->chars[cursor];
     }
     end = cursor;
+    cout << ":: GETWORD :: [" << start << "," << end << "]";
     return this->substring(start, end);
 }
 

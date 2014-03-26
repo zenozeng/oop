@@ -41,20 +41,27 @@ int main() {
     cout << "File loaded." << endl;
 
     int cursor = 0; // 游标
-    int len = file_contents.length();
     String pattern = "cd";
-    int occur = -2;
-    int last_occur = -3;
+    int occur = file_contents.indexOf(pattern, cursor);
+    cursor = occur;
+    int last_occur = -1;
     while(occur != -1 && occur != last_occur) {
+        cout << endl;
         cout << "occur:" << occur << " last:" << last_occur << endl;
+        cout << "cursor:" << cursor << endl;
         
-        last_occur = occur;
-        occur = file_contents.indexOf(pattern, cursor);
         String word = file_contents.getword(cursor);
-        cout << word.to_c_str() << endl;
+        cout << "FIND::" << word.to_c_str() << "::" << word.length() << endl;
+
+        // update cursor
         cursor += word.length();
 
+        // update occur
+        last_occur = occur;
+        occur = file_contents.indexOf(pattern, cursor);
+
         cout << ">> occur:" << occur << " last:" << last_occur << endl;
+        cout << ">> cursor:" << cursor << endl;
     }
     return 0;
 }
