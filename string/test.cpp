@@ -30,6 +30,9 @@ int main() {
     test("indexOf(String pattern, int start)", str.indexOf(search, 3) == 5);
     test("to_c_str", strcmp(chars, str.to_c_str()) == 0);
     test("substring", strcmp(str.substring(0, 4).to_c_str(), "This") == 0);
+    test("substring[fromIndex > 1]", strcmp(str.substring(5, 7).to_c_str(), "is") == 0);
+    test("getword", strcmp(str.getword(1).to_c_str(), "This") == 0);
+    test("getword[at blank]", strcmp(str.getword(4).to_c_str(), "is") == 0);
     test("length", str.length() == strlen(chars));
     test("compare", str.compare("This is") > 0 && str.compare("Z") < 0 && str.compare(chars) == 0);
     test("concat(char)", strcmp(str.concat('!').to_c_str(), "This is my String class.!") == 0);

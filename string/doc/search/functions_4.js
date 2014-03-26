@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3d',['operator=',['../classString.html#a9569887dd75996bd707c1ad9130c8b39',1,'String']]]
+  ['length',['length',['../classString.html#af933abbb49d088f2041b2bd3c5a6b5d8',1,'String']]]
 ];

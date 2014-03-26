@@ -170,14 +170,56 @@ String String::substring (int start, int end = -1) {
         end = this->len;
     }
 
-    chars = new char[end - start + 2];
+    int len = end - start;
 
-    for (int i = start; i < end; ++i) {
-        chars[i] = this->chars[i];
+    chars = new char[len + 1];
+
+    for (int i = 0; i < len; ++i) {
+        chars[i] = this->chars[i + start];
     }
-    chars[end - start + 1] = '\0';
+
+    chars[len] = '\0';
 
     return String(chars);
+}
+
+/**
+ * Get the first word whose end index >= fromIndex
+ *
+ * @param fromIndex The index to start the search from. The default value is 0.
+ *
+ * @note if we are at the middle of a word, it will look back to get the whole word.
+ */
+String String::getword (int fromIndex) {
+    char ch;
+    int cursor = fromIndex;
+    int start;
+    int end; // note that end is not included
+
+    ch = this->chars[cursor];
+    if(ch != ' ' && ch != '\n' && ch != '\t') {
+        // we may at the beginning or middle of a word
+        // go backward to get where the word starts
+        while(cursor > 0 && ch != ' ' && ch != '\n' && ch != '\t') {
+            --cursor;
+            ch = this->chars[cursor];
+        }
+        start = cursor;
+    } else {
+        // go forward to get where the word starts
+        while(cursor < (this->len - 1) && (ch == ' ' || ch == '\n' || ch == '\t')) {
+            ++cursor;
+            ch = this->chars[cursor];
+        }
+        start = cursor;
+    }
+    // go forward to get where the word ends
+    while(cursor < this->len && ch != ' ' && ch != '\n' && ch != '\t') {
+        ++cursor;
+        ch = this->chars[cursor];
+    }
+    end = cursor;
+    return this->substring(start, end);
 }
 
 /**

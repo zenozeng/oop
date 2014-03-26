@@ -28,6 +28,7 @@ public:
     String concat(const char);
     String concat(const char*);
     String concat(String);
+    String getword(int fromIndex = 1);
 };
 
 #endif

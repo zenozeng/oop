@@ -7,10 +7,10 @@
 
 var indexSectionsWithContent =
 {
-  0: "ceilost~",
+  0: "cegilost~",
   1: "s",
   2: "s",
-  3: "ceilost~",
+  3: "cegilost~",
   4: "s"
 };
 

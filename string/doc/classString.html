@@ -126,6 +126,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8e3a2a4a9c96873ac398dd2613497115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a162b25097df927fcc43eead2c69213ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classString.html">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classString.html#a162b25097df927fcc43eead2c69213ed">concat</a> (<a class="el" href="classString.html">String</a>)</td></tr>
 <tr class="separator:a162b25097df927fcc43eead2c69213ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8297e1350c45fa5edccb1d0da74da4d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classString.html">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classString.html#a8297e1350c45fa5edccb1d0da74da4d4">getword</a> (int fromIndex=1)</td></tr>
+<tr class="separator:a8297e1350c45fa5edccb1d0da74da4d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8a7ef356e05eb9b1ea1ab518baee3095"></a>
@@ -314,6 +316,30 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a8297e1350c45fa5edccb1d0da74da4d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classString.html">String</a> String::getword </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fromIndex</em> = <code>1</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the first word whose end index &gt;= fromIndex</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fromIndex</td><td>The index to start the search from. The default value is 0.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>if we are at the middle of a word, it will look back to get the whole word. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="af88b9ead57beb3320cea5033c481eab7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -467,7 +493,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 25 2014 23:09:16 for String by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 15:13:06 for String by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
