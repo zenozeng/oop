@@ -9,4 +9,4 @@ test: String.cpp test.cpp
 doc: *.cpp
 	doxygen ../doxy-config/Doxyfile
 
-.PHONY: test build doc
+.PHONY: test build find-words
