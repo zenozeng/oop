@@ -31,7 +31,7 @@ public:
     int length(void);
     ElemType nth(int index);
     ElemType pop(void);
-    void splice(int index, int howmany = 1);
+    void remove(int index, int howmany = 1);
     void push(const ElemType item);
     string join(void);
 };
@@ -102,7 +102,7 @@ ElemType array<ElemType>::pop(void) {
  * @param howmany The number of elements to remove
  */
 template<class ElemType>
-void array<ElemType>::splice(int index, int howmany) {
+void array<ElemType>::remove(int index, int howmany) {
     for (int i = index, max = this->count - howmany; i < max; i++) {
         this->elems[i] = this->elems[i + howmany];
     }

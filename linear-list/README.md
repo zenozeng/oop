@@ -1,5 +1,11 @@
 # 线性表
 
+## TODOS
+
+- List
+
+- insert for array
+
 ## Links
 
 - http://www.cprogramming.com/tutorial/templates.html
