@@ -1,11 +1,11 @@
-#include "linear_list.h"
+#include "array.hpp"
 #include <iostream>
 #include <cassert>
 #include <cstring>
 
 int main()
 {
-    linear_list<int> arr;
+    array<int> arr;
     arr.push(1);
     arr.push(2);
     arr.push(3);

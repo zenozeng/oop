@@ -8,15 +8,18 @@
  * This is my CPP Homework at ZJU.
  */
 
-#ifndef OOP_LINEAR_LIST_H_
-#define OOP_LINEAR_LIST_H_
+#ifndef OOP_ARRAY_H_
+#define OOP_ARRAY_H_
 
+#include "linear_list.hpp"
 #include <string>
 #include <cstring>
 
 using namespace std;
 
-template <class ElemType> class linear_list {
+template <class ElemType>
+class array:public linear_list<ElemType>
+{
 private:
     int len;
     int count;
@@ -24,7 +27,7 @@ private:
     void double_capacity(void); // 双倍线性表的长度
 
 public:
-    linear_list();
+    array();
     int length(void);
     ElemType nth(int index);
     ElemType pop(void);
@@ -39,7 +42,7 @@ public:
  *
  */
 template<class ElemType>
-linear_list<ElemType>::linear_list() {
+array<ElemType>::array() {
     this->len = 100;
     this->count = 0;
     this->elems = new ElemType[this->len];
@@ -50,7 +53,7 @@ linear_list<ElemType>::linear_list() {
  *
  */
 template<class ElemType>
-void linear_list<ElemType>::double_capacity(void) {
+void array<ElemType>::double_capacity(void) {
     ElemType* tmp;
     int newlen;
 
@@ -59,7 +62,7 @@ void linear_list<ElemType>::double_capacity(void) {
 
     memcpy(tmp, this->elems, sizeof(ElemType) * this->len);
     delete[] this->elems;
-        
+
     this->elems = tmp;
 }
 
@@ -68,7 +71,7 @@ void linear_list<ElemType>::double_capacity(void) {
  *
  */
 template<class ElemType>
-int linear_list<ElemType>::length(void) {
+int array<ElemType>::length(void) {
     return this->count;
 }
 
@@ -77,7 +80,7 @@ int linear_list<ElemType>::length(void) {
  *
  */
 template<class ElemType>
-ElemType linear_list<ElemType>::nth(int index) {
+ElemType array<ElemType>::nth(int index) {
     return this->elems[index];
 }
 
@@ -86,7 +89,7 @@ ElemType linear_list<ElemType>::nth(int index) {
  *
  */
 template<class ElemType>
-ElemType linear_list<ElemType>::pop(void) {
+ElemType array<ElemType>::pop(void) {
     ElemType elem = this->elems[this->count - 1];
     this->count--; // 标记为可写即可
     return elem;
@@ -99,7 +102,7 @@ ElemType linear_list<ElemType>::pop(void) {
  * @param howmany The number of elements to remove
  */
 template<class ElemType>
-void linear_list<ElemType>::splice(int index, int howmany) {
+void array<ElemType>::splice(int index, int howmany) {
     for (int i = index, max = this->count - howmany; i < max; i++) {
         this->elems[i] = this->elems[i + howmany];
     }
@@ -111,8 +114,8 @@ void linear_list<ElemType>::splice(int index, int howmany) {
  *
  */
 template<class ElemType>
-void linear_list<ElemType>::push(ElemType elem) {
-    
+void array<ElemType>::push(ElemType elem) {
+
     this->elems[this->count] = elem;
 
     this->count++;
@@ -127,7 +130,7 @@ void linear_list<ElemType>::push(ElemType elem) {
  * @param os Output Stream
  */
 template<class ElemType>
-string linear_list<ElemType>::join(void) {
+string array<ElemType>::join(void) {
     string str = "";
     str += to_string(this->elems[0]);
     for (int i = 1; i < this->count; i++) {
@@ -137,4 +140,4 @@ string linear_list<ElemType>::join(void) {
     return str;
 }
 
-#endif // OOP_LINEAR_LIST_H_
+#endif // OOP_ARRAY_H_
