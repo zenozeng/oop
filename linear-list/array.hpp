@@ -33,6 +33,7 @@ public:
     ElemType pop(void);
     void remove(int index, int howmany = 1);
     void push(const ElemType item);
+    void insert(const int index, const ElemType elem);
     string join(void);
 };
 
@@ -107,6 +108,20 @@ void array<ElemType>::remove(int index, int howmany) {
         this->elems[i] = this->elems[i + howmany];
     }
     this->count -= howmany;
+}
+
+/**
+ * Insert an item to at given index
+ *
+ */
+template<class ElemType>
+void array<ElemType>::insert(int index, ElemType elem) {
+    ElemType lastItem = this->elems[this->count - 1];
+    for (int i = this->count - 1; i > index; i--) {
+        this->elems[i] = this->elems[i - 1];
+    }
+    this->elems[index] = elem;
+    this->push(lastItem);
 }
 
 /**

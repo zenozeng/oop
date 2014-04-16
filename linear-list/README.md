@@ -4,8 +4,6 @@
 
 - List
 
-- insert for array
-
 ## Links
 
 - http://www.cprogramming.com/tutorial/templates.html
