@@ -39,7 +39,7 @@ public:
 
 
 /**
- * Constructor that generate an empty linear list
+ * Constructor that generate an empty array
  *
  */
 template<class ElemType>
@@ -50,7 +50,7 @@ array<ElemType>::array() {
 }
 
 /**
- * Double the max length of this linear list
+ * Double the max length of this array
  *
  */
 template<class ElemType>
@@ -68,7 +68,7 @@ void array<ElemType>::double_capacity(void) {
 }
 
 /**
- * Get the length of current linear list
+ * Get the length of current array
  *
  */
 template<class ElemType>
@@ -86,7 +86,7 @@ ElemType array<ElemType>::nth(int index) {
 }
 
 /**
- * Removes the last element from linear list and returns that element
+ * Removes the last element from array and returns that element
  *
  */
 template<class ElemType>
@@ -99,7 +99,7 @@ ElemType array<ElemType>::pop(void) {
 /**
  * Remove the content of an array
  *
- * @param index Index at which to start changing the linear list
+ * @param index Index at which to start changing the array
  * @param howmany The number of elements to remove
  */
 template<class ElemType>
@@ -121,11 +121,11 @@ void array<ElemType>::insert(int index, ElemType elem) {
         this->elems[i] = this->elems[i - 1];
     }
     this->elems[index] = elem;
-    this->push(lastItem);
+    this->push(lastItem); // note that cout will be added here
 }
 
 /**
- * Add one element to the end of linear list
+ * Add one element to the end of array
  *
  */
 template<class ElemType>
@@ -140,7 +140,7 @@ void array<ElemType>::push(ElemType elem) {
 }
 
 /**
- * Join the linear list by comma (C++11 required)
+ * Join the array by comma (C++11 required)
  *
  * @param os Output Stream
  */

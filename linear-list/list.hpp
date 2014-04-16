@@ -17,57 +17,66 @@
 
 using namespace std;
 
+/**
+ * List Node
+ *
+ */
+
+template <class ElemType>
+class node
+{
+public:
+    node(ElemType elem);
+    node* next;
+    node* prev;
+    ElemType value;
+};
+
+template <class ElemType>
+node<ElemType>::node(ElemType value) {
+    this->value = value;
+    this->next = NULL;
+    this->prev = NULL;
+}
+
+/**
+ * List
+ *
+ */
+
 template <class ElemType>
 class list:public linear_list<ElemType>
 {
 private:
-    int len;
     int count;
-    ElemType* elems;
-    void double_capacity(void); // 双倍线性表的长度
+    node<ElemType>* head;
+    node<ElemType>* foot;
 
 public:
     list();
     int length(void);
     ElemType nth(int index);
     ElemType pop(void);
-    void splice(int index, int howmany = 1);
-    void push(const ElemType item);
+    void remove(int index, int howmany = 1);
+    void push(ElemType item);
+    void insert(int index, ElemType elem);
     string join(void);
 };
 
 
 /**
- * Constructor that generate an empty linear list
+ * Constructor that generate an empty list
  *
  */
 template<class ElemType>
 list<ElemType>::list() {
-    this->len = 100;
     this->count = 0;
-    this->elems = new ElemType[this->len];
+    this->head = NULL;
+    this->foot = NULL;
 }
 
 /**
- * Double the max length of this linear list
- *
- */
-template<class ElemType>
-void list<ElemType>::double_capacity(void) {
-    ElemType* tmp;
-    int newlen;
-
-    newlen = 2 * this->len;
-    tmp = new ElemType[newlen];
-
-    memcpy(tmp, this->elems, sizeof(ElemType) * this->len);
-    delete[] this->elems;
-
-    this->elems = tmp;
-}
-
-/**
- * Get the length of current linear list
+ * Get the length of current list
  *
  */
 template<class ElemType>
@@ -76,51 +85,96 @@ int list<ElemType>::length(void) {
 }
 
 /**
- * Get elems[index]
- *
- */
-template<class ElemType>
-ElemType list<ElemType>::nth(int index) {
-    return this->elems[index];
-}
-
-/**
- * Removes the last element from linear list and returns that element
- *
- */
-template<class ElemType>
-ElemType list<ElemType>::pop(void) {
-    ElemType elem = this->elems[this->count - 1];
-    this->count--; // 标记为可写即可
-    return elem;
-}
-
-/**
- * Remove the content of an list
- *
- * @param index Index at which to start changing the linear list
- * @param howmany The number of elements to remove
- */
-template<class ElemType>
-void list<ElemType>::splice(int index, int howmany) {
-    for (int i = index, max = this->count - howmany; i < max; i++) {
-        this->elems[i] = this->elems[i + howmany];
-    }
-    this->count -= howmany;
-}
-
-/**
- * Add one element to the end of linear list
+ * Add one element to the end of list
  *
  */
 template<class ElemType>
 void list<ElemType>::push(ElemType elem) {
 
-    this->elems[this->count] = elem;
+    node<ElemType> elem_node(elem);
+
+    if(this->head == NULL) {
+        this->head = &elem_node;
+        this->foot = &elem_node;
+    } else {
+        elem_node.prev = this->foot;
+        this->foot->next = &elem_node;
+        this->foot = &elem_node;
+    }
 
     this->count++;
-    if (this->count == this->len) {
-        this->double_capacity();
+}
+
+/**
+ * Get elems[index]
+ *
+ */
+template<class ElemType>
+ElemType list<ElemType>::nth(int index) {
+    node<ElemType>* current = this->head;
+    while( index != 0 ) {
+        current = current->next;
+        index--;
+    }
+    return current->value;
+}
+
+/**
+ * Removes the last element from list and returns that element
+ *
+ */
+template<class ElemType>
+ElemType list<ElemType>::pop(void) {
+    ElemType elem = this->foot->value;
+    this->count--;
+    this->foot = this->foot->prev;
+    this->foot->next = NULL;
+    this->count--;
+    return elem;
+}
+
+/**
+ * Insert an item to at given index
+ *
+ */
+template<class ElemType>
+void list<ElemType>::insert(int index, ElemType elem) {
+    node<ElemType>* current = this->head;
+    node<ElemType>* new_node(elem);
+    while( index != 0 ) {
+        current = current->next;
+        index--;
+    }
+    new_node->prev = current->prev;
+    new_node->next = current;
+    if( current->prev != NULL) {
+        current->prev->next = new_node;
+    }
+    current->prev = new_node;
+    this->count++;
+}
+
+/**
+ * Remove the content of an list
+ *
+ * @param index Index at which to start changing the list
+ * @param howmany The number of elements to remove
+ */
+template<class ElemType>
+void list<ElemType>::remove(int index, int howmany) {
+    if (howmany != 1) {
+        for (int i = index; i < index + howmany; i++) {
+            this->remove(i, 1);
+        }
+    } else {
+        node<ElemType>* current = this->head;
+        while( index != 0 ) {
+            current = current->next;
+            index--;
+        }
+        current->prev->next = current->next;
+        current->next->prev = current->prev;
+        this->count--;
     }
 }
 
@@ -132,10 +186,12 @@ void list<ElemType>::push(ElemType elem) {
 template<class ElemType>
 string list<ElemType>::join(void) {
     string str = "";
-    str += to_string(this->elems[0]);
-    for (int i = 1; i < this->count; i++) {
+    node<ElemType>* current = this->head;
+    str += to_string(current->value);
+    while( current->next != NULL) {
+        current = current->next;
         str += ", ";
-        str += to_string(this->elems[i]);
+        str += to_string(current->value);
     }
     return str;
 }
