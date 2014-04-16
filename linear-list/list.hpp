@@ -14,6 +14,7 @@
 #include "linear_list.hpp"
 #include <string>
 #include <cstring>
+#include <iostream>
 
 using namespace std;
 
@@ -140,17 +141,17 @@ ElemType list<ElemType>::pop(void) {
 template<class ElemType>
 void list<ElemType>::insert(int index, ElemType elem) {
     node<ElemType>* current = this->head;
-    node<ElemType>* new_node(elem);
+    node<ElemType> new_node(elem);
     while( index != 0 ) {
         current = current->next;
         index--;
     }
-    new_node->prev = current->prev;
-    new_node->next = current;
+    new_node.prev = current->prev;
+    new_node.next = current;
     if( current->prev != NULL) {
-        current->prev->next = new_node;
+        current->prev->next = &new_node;
     }
-    current->prev = new_node;
+    current->prev = &new_node;
     this->count++;
 }
 
@@ -187,8 +188,11 @@ template<class ElemType>
 string list<ElemType>::join(void) {
     string str = "";
     node<ElemType>* current = this->head;
+    int max = 10;
+    int i = 0;
     str += to_string(current->value);
-    while( current->next != NULL) {
+    while( current->next != NULL && i < max) {
+        i++;
         current = current->next;
         str += ", ";
         str += to_string(current->value);
