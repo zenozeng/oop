@@ -10,6 +10,8 @@ int main()
     li.push(3);
     cout << "\n=== push ===\n";
     cout << li.join();
+    cout << "\n";
+    cout << li.length();
     cout << "\n=== nth ===\n";
     cout << li.nth(1);
     cout << "\n=== pop ===\n";
@@ -25,11 +27,15 @@ int main()
     li.remove(2, 2);
     cout << li.join();
     cout << "\n=== length ===\n";
+    cout << li.join();
+    cout << "\n";
     cout << li.length();
     cout << "\n=== insert ===\n";
     li.push(7);
     li.push(8);
     li.push(9);
+    cout << li.join();
+    cout << "\n";
     li.insert(2, 10);
     cout << li.join();
     return 0;

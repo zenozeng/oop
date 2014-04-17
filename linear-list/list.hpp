@@ -92,15 +92,16 @@ int list<ElemType>::length(void) {
 template<class ElemType>
 void list<ElemType>::push(ElemType elem) {
 
-    node<ElemType> elem_node(elem);
+    node<ElemType>* elem_node;
+    elem_node = new node<ElemType>(elem);
 
     if(this->head == NULL) {
-        this->head = &elem_node;
-        this->foot = &elem_node;
+        this->head = elem_node;
+        this->foot = elem_node;
     } else {
-        elem_node.prev = this->foot;
-        this->foot->next = &elem_node;
-        this->foot = &elem_node;
+        elem_node->prev = this->foot;
+        this->foot->next = elem_node;
+        this->foot = elem_node;
     }
 
     this->count++;
@@ -126,12 +127,13 @@ ElemType list<ElemType>::nth(int index) {
  */
 template<class ElemType>
 ElemType list<ElemType>::pop(void) {
-    ElemType elem = this->foot->value;
-    this->count--;
+    node<ElemType>* foot = this->foot;
+    ElemType last = foot->value;
     this->foot = this->foot->prev;
     this->foot->next = NULL;
     this->count--;
-    return elem;
+    delete foot;
+    return last;
 }
 
 /**
@@ -141,17 +143,17 @@ ElemType list<ElemType>::pop(void) {
 template<class ElemType>
 void list<ElemType>::insert(int index, ElemType elem) {
     node<ElemType>* current = this->head;
-    node<ElemType> new_node(elem);
+    node<ElemType>* new_node = new node<ElemType>(elem);
     while( index != 0 ) {
         current = current->next;
         index--;
     }
-    new_node.prev = current->prev;
-    new_node.next = current;
+    new_node->prev = current->prev;
+    new_node->next = current;
     if( current->prev != NULL) {
-        current->prev->next = &new_node;
+        current->prev->next = new_node;
     }
-    current->prev = &new_node;
+    current->prev = new_node;
     this->count++;
 }
 
@@ -165,7 +167,9 @@ template<class ElemType>
 void list<ElemType>::remove(int index, int howmany) {
     if (howmany != 1) {
         for (int i = index; i < index + howmany; i++) {
-            this->remove(i, 1);
+            // note that after last remove, the original INDEX = index + 1
+            // now becomes INDEX = index
+            this->remove(index, 1);
         }
     } else {
         node<ElemType>* current = this->head;
@@ -173,8 +177,12 @@ void list<ElemType>::remove(int index, int howmany) {
             current = current->next;
             index--;
         }
-        current->prev->next = current->next;
-        current->next->prev = current->prev;
+        if(current->prev != NULL) {
+            current->prev->next = current->next;
+        }
+        if(current->next != NULL) {
+            current->next->prev = current->prev;
+        }
         this->count--;
     }
 }
@@ -188,11 +196,8 @@ template<class ElemType>
 string list<ElemType>::join(void) {
     string str = "";
     node<ElemType>* current = this->head;
-    int max = 10;
-    int i = 0;
     str += to_string(current->value);
-    while( current->next != NULL && i < max) {
-        i++;
+    while(current->next != NULL) {
         current = current->next;
         str += ", ";
         str += to_string(current->value);
