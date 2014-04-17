@@ -21,18 +21,22 @@ public:
     
 template <typename Engine, typename ElemType>
 stack<Engine, ElemType>::stack() {
-    this->instance = new Engine<ElemType>;
+    this->instance = new Engine;
 }
+template <typename Engine, typename ElemType>
 stack<Engine, ElemType>::~stack() {
     delete this->instance;
 }
-stack<Engine, ElemType>::length() {
+template <typename Engine, typename ElemType>
+int stack<Engine, ElemType>::length() {
     return this->instance->length();
 }
-stack<Engine, ElemType>::push(ElemType elem) {
+template <typename Engine, typename ElemType>
+void stack<Engine, ElemType>::push(ElemType elem) {
     this->instance->push(elem);
 }
-stack<Engine, ElemType>::pop() {
+template <typename Engine, typename ElemType>
+ElemType stack<Engine, ElemType>::pop() {
     return this->instance->pop();
 }
 

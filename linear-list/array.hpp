@@ -28,6 +28,7 @@ private:
 
 public:
     array();
+    ~array();
     int length(void);
     ElemType nth(int index);
     ElemType pop(void);
@@ -47,6 +48,11 @@ array<ElemType>::array() {
     this->len = 100;
     this->count = 0;
     this->elems = new ElemType[this->len];
+}
+
+template<class ElemType>
+array<ElemType>::~array() {
+    this->count = 0;
 }
 
 /**

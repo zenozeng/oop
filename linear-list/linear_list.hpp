@@ -13,6 +13,7 @@ public:
     virtual void insert(int afterIndex, ElemType elem)=0;
     virtual void push(const ElemType item)=0;
     virtual string join(void)=0;
+    virtual ~linear_list(){};
 };
 
 #endif // OOP_LINEAR_LIST_H_

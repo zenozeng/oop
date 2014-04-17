@@ -1,6 +1,11 @@
-#include "array.hpp"
-#include "list.hpp"
+#include "stack.hpp"
 
-linear_list<int>* linear_list_array = new array<int>;
-linear_list<int>* linear_list_list = new list<int>;
+int main(void) {
+
+    stack<array<int>, int> stack_using_array;
+    stack<list<int>, int> statck_using_list;
+
+    return 0;
+}
+
     

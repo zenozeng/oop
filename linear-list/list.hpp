@@ -54,6 +54,7 @@ private:
 
 public:
     list();
+    ~list();
     int length(void);
     ElemType nth(int index);
     ElemType pop(void);
@@ -71,6 +72,24 @@ public:
 template<class ElemType>
 list<ElemType>::list() {
     this->count = 0;
+    this->head = NULL;
+    this->foot = NULL;
+}
+
+template<class ElemType>
+list<ElemType>::~list() {
+    node<ElemType>* current = this->head;
+    node<ElemType>* next;
+    if(current != NULL) { // current list might be empty
+        while(current->next != NULL) {
+            next = current->next;
+            delete current;
+            current = next;
+        }
+        delete current;
+    }
+    next = NULL;
+    current = NULL;
     this->head = NULL;
     this->foot = NULL;
 }
