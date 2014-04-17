@@ -1,9 +1,5 @@
 # 线性表
 
-## TODOS
-
-- List
-
 ## Links
 
 - http://www.cprogramming.com/tutorial/templates.html

@@ -14,7 +14,6 @@
 #include "linear_list.hpp"
 #include <string>
 #include <cstring>
-#include <iostream>
 
 using namespace std;
 
