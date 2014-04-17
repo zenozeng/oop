@@ -14,7 +14,7 @@ void benchmark(void) {
 
     cout << "STACK USING ARRAY BENCHMARK START\n";
     start = clock();
-    for(int i = 0; i < 1000 * 10000; i++) {
+    for(int i = 0; i < 10000 * 10000; i++) {
         stack_using_array.push(i);
     }
     end = clock();
@@ -22,7 +22,7 @@ void benchmark(void) {
     cout << "10,000,000 push in " << delta << " seconds." << "\n";
 
     start = clock();
-    for(int i = 0; i < 1000 * 10000; i++) {
+    for(int i = 0; i < 10000 * 10000; i++) {
         stack_using_array.pop();
     }
     end = clock();
@@ -33,7 +33,7 @@ void benchmark(void) {
 
     cout << "STACK USING LIST BENCHMARK START\n";
     start = clock();
-    for(int i = 0; i < 1000 * 10000; i++) {
+    for(int i = 0; i < 10000 * 10000; i++) {
         stack_using_list.push(i);
     }
     end = clock();
@@ -41,7 +41,7 @@ void benchmark(void) {
     cout << "10,000,000 push in " << delta << " seconds." << "\n";
 
     start = clock();
-    for(int i = 0; i < 1000 * 10000; i++) {
+    for(int i = 0; i < 10000 * 10000; i++) {
         stack_using_list.pop();
     }
     end = clock();
