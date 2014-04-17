@@ -4,46 +4,56 @@
 
 int endp;
 
-int main(void) {
-
+void benchmark(void) {
     stack<array<int>, int> stack_using_array;
     stack<list<int>, int> stack_using_list;
 
-    time_t start;
-    time_t end;
+    clock_t start;
+    clock_t end;
+    float delta;
 
     cout << "STACK USING ARRAY BENCHMARK START\n";
-    time(&start);
-    for(int i = 0; i < 10000 * 10000; i++) {
+    start = clock();
+    for(int i = 0; i < 1000 * 10000; i++) {
         stack_using_array.push(i);
     }
-    time(&end);
-    cout << "100,000,000 push in " << difftime(end, start) << " seconds." << "\n";
+    end = clock();
+    delta = (end - start) * 1.0 / CLOCKS_PER_SEC;
+    cout << "10,000,000 push in " << delta << " seconds." << "\n";
 
-    time(&start);
-    for(int i = 0; i < 10000 * 10000; i++) {
+    start = clock();
+    for(int i = 0; i < 1000 * 10000; i++) {
         stack_using_array.pop();
     }
-    time(&end);
-    cout << "100,000,000 pop in " << difftime(end, start) << " seconds." << "\n";
+    end = clock();
+    delta = (end - start) * 1.0 / CLOCKS_PER_SEC;
+    cout << "10,000,000 pop in " << delta << " seconds." << "\n";
 
+    cout << endl;
 
     cout << "STACK USING LIST BENCHMARK START\n";
-    time(&start);
-    for(int i = 0; i < 10000 * 10000; i++) {
+    start = clock();
+    for(int i = 0; i < 1000 * 10000; i++) {
         stack_using_list.push(i);
     }
-    time(&end);
-    cout << "100,000,000 push in " << difftime(end, start) << " seconds." << "\n";
+    end = clock();
+    delta = (end - start) * 1.0 / CLOCKS_PER_SEC;
+    cout << "10,000,000 push in " << delta << " seconds." << "\n";
 
-    time(&start);
-    for(int i = 0; i < 10000 * 10000; i++) {
+    start = clock();
+    for(int i = 0; i < 1000 * 10000; i++) {
         stack_using_list.pop();
     }
-    time(&end);
-    cout << "100,000,000 pop in " << difftime(end, start) << " seconds." << "\n";
+    end = clock();
+    delta = (end - start) * 1.0 / CLOCKS_PER_SEC;
+    cout << "10,000,000 pop in " << delta << " seconds." << "\n";
 
-    cin >> endp;
+
+}
+
+int main(void) {
+
+    benchmark();
 
     return 0;
 }

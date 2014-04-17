@@ -2,6 +2,7 @@
 #define OOP_LINEAR_LIST_H_
 
 #include <string>
+#include <iostream>
 using namespace std;
 
 template <class ElemType> class linear_list {

@@ -78,15 +78,9 @@ list<ElemType>::list() {
 
 template<class ElemType>
 list<ElemType>::~list() {
-    node<ElemType>* current = this->head;
-    node<ElemType>* next;
-    while(this->length() != 0) {
+    while(this->count != 0) {
         this->pop();
     }
-    next = NULL;
-    current = NULL;
-    this->head = NULL;
-    this->foot = NULL;
 }
 
 /**
@@ -140,15 +134,16 @@ ElemType list<ElemType>::nth(int index) {
  */
 template<class ElemType>
 ElemType list<ElemType>::pop(void) {
-    node<ElemType>* foot = this->foot;
-    ElemType last = foot->value;
-    this->foot = this->foot->prev;
-    if(this->foot != NULL) {
-        this->foot->next = NULL;
+    node<ElemType>* new_foot = this->foot->prev;
+    ElemType ori_foot_value = this->foot->value;
+    if(new_foot != NULL) {
+        new_foot->next = NULL;
     }
+
+    delete this->foot;
+    this->foot = new_foot;
     this->count--;
-    delete foot;
-    return last;
+    return ori_foot_value;
 }
 
 /**
@@ -198,6 +193,7 @@ void list<ElemType>::remove(int index, int howmany) {
         if(current->next != NULL) {
             current->next->prev = current->prev;
         }
+        delete current;
         this->count--;
     }
 }

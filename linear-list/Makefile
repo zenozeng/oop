@@ -14,4 +14,7 @@ debug: benchmark.cpp stack.hpp
 	g++ benchmark.cpp -g -std=c++11
 	gdb a.out
 
+check: benchmark.cpp
+	cppcheck -I . --enable=all  benchmark.cpp
+
 .PHONY: build
