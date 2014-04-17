@@ -80,13 +80,8 @@ template<class ElemType>
 list<ElemType>::~list() {
     node<ElemType>* current = this->head;
     node<ElemType>* next;
-    if(current != NULL) { // current list might be empty
-        while(current->next != NULL) {
-            next = current->next;
-            delete current;
-            current = next;
-        }
-        delete current;
+    while(this->length() != 0) {
+        this->pop();
     }
     next = NULL;
     current = NULL;

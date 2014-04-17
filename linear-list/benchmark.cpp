@@ -2,6 +2,8 @@
 #include <iostream>
 #include <ctime>
 
+int endp;
+
 int main(void) {
 
     stack<array<int>, int> stack_using_array;
@@ -40,6 +42,8 @@ int main(void) {
     }
     time(&end);
     cout << "100,000,000 pop in " << difftime(end, start) << " seconds." << "\n";
+
+    cin >> endp;
 
     return 0;
 }
