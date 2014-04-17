@@ -148,7 +148,9 @@ ElemType list<ElemType>::pop(void) {
     node<ElemType>* foot = this->foot;
     ElemType last = foot->value;
     this->foot = this->foot->prev;
-    this->foot->next = NULL;
+    if(this->foot != NULL) {
+        this->foot->next = NULL;
+    }
     this->count--;
     delete foot;
     return last;
