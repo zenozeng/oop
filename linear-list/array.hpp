@@ -14,6 +14,7 @@
 #include "linear_list.hpp"
 #include <string>
 #include <cstring>
+#include <iostream>
 
 using namespace std;
 
@@ -33,7 +34,7 @@ public:
     ElemType nth(int index);
     ElemType pop(void);
     void remove(int index, int howmany = 1);
-    void push(const ElemType item);
+    void push(ElemType item);
     void insert(const int index, const ElemType elem);
     string join(void);
 };
@@ -52,7 +53,7 @@ array<ElemType>::array() {
 
 template<class ElemType>
 array<ElemType>::~array() {
-    delete[] this->elems;
+    // delete[] this->elems;
 }
 
 /**
@@ -71,6 +72,7 @@ void array<ElemType>::double_capacity(void) {
     delete[] this->elems;
 
     this->elems = tmp;
+    this->len = newlen;
 }
 
 /**
@@ -137,12 +139,12 @@ void array<ElemType>::insert(int index, ElemType elem) {
 template<class ElemType>
 void array<ElemType>::push(ElemType elem) {
 
-    this->elems[this->count] = elem;
-
-    this->count++;
     if (this->count == this->len) {
         this->double_capacity();
     }
+
+    this->elems[this->count] = elem;
+    this->count++;
 }
 
 /**
