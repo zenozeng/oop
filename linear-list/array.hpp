@@ -52,7 +52,7 @@ array<ElemType>::array() {
 
 template<class ElemType>
 array<ElemType>::~array() {
-    this->count = 0;
+    delete[] this->elems;
 }
 
 /**

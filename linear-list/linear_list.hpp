@@ -13,7 +13,7 @@ public:
     virtual void insert(int afterIndex, ElemType elem)=0;
     virtual void push(const ElemType item)=0;
     virtual string join(void)=0;
-    virtual ~linear_list(){};
+    virtual ~linear_list(){}; // 析构哪怕纯虚也要有实现的
 };
 
 #endif // OOP_LINEAR_LIST_H_
