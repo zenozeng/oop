@@ -55,7 +55,7 @@ int main(void) {
 
     benchmark();
 
-    cin >> endp;
+    // cin >> endp;
 
     return 0;
 }
