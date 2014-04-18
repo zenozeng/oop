@@ -21,4 +21,8 @@ debug: benchmark_big.cpp
 	clang++ benchmark_big.cpp -Wall -std=c++11
 	./a.out
 
+check: benchmark.cpp
+	g++ benchmark.cpp -g -std=c++11
+	valgrind --tool=memcheck --leak-check=yes ./a.out
+
 .PHONY: build

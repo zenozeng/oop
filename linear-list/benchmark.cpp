@@ -2,60 +2,28 @@
 #include <iostream>
 #include <ctime>
 
-int endp;
+int dotimes = 1000 * 1000;
 
-void benchmark(void) {
+#define benchmark(name, exp)                                            \
+    start = clock();                                                    \
+    for(int i = 0; i < dotimes; i++) {                                  \
+        exp;                                                            \
+    }                                                                   \
+    delta = (clock() - start) * 1.0 / CLOCKS_PER_SEC;                   \
+    cout << dotimes << " " << name << " in " << delta << " seconds" << endl;
+
+int main(void) {
+
     stack<array<int>, int> stack_using_array;
     stack<list<int>, int> stack_using_list;
 
     clock_t start;
-    clock_t end;
     float delta;
 
-    cout << "STACK USING ARRAY BENCHMARK START\n";
-    start = clock();
-    for(int i = 0; i < 1000 * 10000; i++) {
-        stack_using_array.push(i);
-    }
-    end = clock();
-    delta = (end - start) * 1.0 / CLOCKS_PER_SEC;
-    cout << "10,000,000 push in " << delta << " seconds." << "\n";
-
-    start = clock();
-    for(int i = 0; i < 1000 * 10000; i++) {
-        stack_using_array.pop();
-    }
-    end = clock();
-    delta = (end - start) * 1.0 / CLOCKS_PER_SEC;
-    cout << "10,000,000 pop in " << delta << " seconds." << "\n";
-
-    cout << endl;
-
-    cout << "STACK USING LIST BENCHMARK START\n";
-    start = clock();
-    for(int i = 0; i < 1000 * 10000; i++) {
-        stack_using_list.push(i);
-    }
-    end = clock();
-    delta = (end - start) * 1.0 / CLOCKS_PER_SEC;
-    cout << "10,000,000 push in " << delta << " seconds." << "\n";
-
-    start = clock();
-    for(int i = 0; i < 1000 * 10000; i++) {
-        stack_using_list.pop();
-    }
-    end = clock();
-    delta = (end - start) * 1.0 / CLOCKS_PER_SEC;
-    cout << "10,000,000 pop in " << delta << " seconds." << "\n";
-
-
-}
-
-int main(void) {
-
-    benchmark();
-
-    // cin >> endp;
+    benchmark("push (stack using array)", stack_using_array.push(42));
+    benchmark("pop (stack using array)", stack_using_array.pop());
+    benchmark("push (stack using list)", stack_using_list.push(42));
+    benchmark("pop (stack using list)", stack_using_list.pop());
 
     return 0;
 }
