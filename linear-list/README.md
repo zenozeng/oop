@@ -1,5 +1,22 @@
 # 线性表
 
+## Usage
+
+### benchmark
+
+`make benchmark`
+
+### mem leak check
+
+`make check`
+
+### basic test
+
+```
+make array_test
+make list_test
+```
+
 ## Links
 
 - http://www.cprogramming.com/tutorial/templates.html
