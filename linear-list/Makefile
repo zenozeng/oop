@@ -10,16 +10,9 @@ benchmark: benchmark.cpp stack.hpp
 	clang++ benchmark.cpp -Wall -std=c++11
 	./a.out
 
-# debug: benchmark.cpp stack.hpp
-# 	g++ benchmark.cpp -g -std=c++11
-# 	gdb a.out
-
-# check: benchmark.cpp
-# 	cppcheck -I . --enable=all  benchmark.cpp
-
-debug: benchmark_big.cpp
-	clang++ benchmark_big.cpp -Wall -std=c++11
-	./a.out
+debug: benchmark.cpp stack.hpp
+	g++ benchmark.cpp -g -std=c++11
+	gdb a.out
 
 check: benchmark.cpp
 	g++ benchmark.cpp -g -std=c++11
